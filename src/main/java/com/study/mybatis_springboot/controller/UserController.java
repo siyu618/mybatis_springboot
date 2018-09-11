@@ -62,6 +62,7 @@ public class UserController {
         User user = new User();
         user.setAge(10);
         user.setUsername(name);
+        user.setPassword(name);
         return userService.insert(user);
     }
 

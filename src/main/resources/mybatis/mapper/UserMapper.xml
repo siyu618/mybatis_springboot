@@ -35,6 +35,6 @@
   )
   </insert>
     <delete id="deleteUserById">
-  DELETE user WHERE ID = #{id}
+  DELETE from user WHERE ID = #{id}
   </delete>
 </mapper>
