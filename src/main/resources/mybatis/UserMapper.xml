@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.mybatis_springboot.mapper.UserMapper">
+
+    <select id="findUserInfo" resultType="com.study.mybatis_springboot.model.User">
+    select id, username, age,password from user;
+  </select>
+
+    <select id="getUserById" resultType="com.study.mybatis_springboot.model.User">
+        SELECT
+              id as id,
+              username as username,
+              password as password,
+              age as age
+        FROM user
+        WHERE ID = #{id}
+    </select>
+
+    <update id="updateUser">
+  UPDATE user
+  SET username = #{user.username},
+  password = #{user.password},
+  AGE = #{user.age}
+  WHERE ID = #{user.id}
+  </update>
+
+    <insert id="insertUser">
+  INSERT INTO
+  user(id, username, password, age)
+  VALUES (
+  #{user.id},
+  #{user.username},
+  #{user.password},
+  #{user.age}
+  )
+  </insert>
+    <delete id="deleteUserById">
+  DELETE user WHERE ID = #{id}
+  </delete>
+</mapper>

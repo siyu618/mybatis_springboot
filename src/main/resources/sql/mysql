@@ -1,0 +1,91 @@
+CREATE USER 'test'@'%' IDENTIFIED BY 'test';
+
+GRANT ALL ON *.* TO 'test'@'%';
+
+
+CREATE TABLE `request_create_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `request_id` varchar(50) NOT NULL COMMENT '用户名',
+  `detail` varchar(1000) NOT NULL COMMENT 'detail',
+   `request_status` int(11) NOT NULL COMMENT 'request status',
+   `retry_times` int(11) NOT NULL COMMENT 'retry times',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(50) NOT NULL COMMENT '用户名',
+  `sex` varchar(10) NOT NULL COMMENT 'sex',
+   `age` int(11) NOT NULL COMMENT 'age',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+insert into user (name, sex, age) values ('zhangsan', 'male', 18), ('lisi', 'male', 19), ('wangwu', 'male', 17);
+
+
+
+
+
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `username` varchar(50) NOT NULL COMMENT '用户名',
+  `password` varchar(10) NOT NULL COMMENT 'sex',
+   `age` int(11) NOT NULL COMMENT 'age',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into user (username, password, age) values ('zhangsan', 'shangshan', 18), ('lisi', 'lisi', 19), ('wangwu', 'wangwu', 17);
+
+
+
+ @Insert({
+        "insert into request_create_status (id, request_id, ",
+        "detail, request_status, ",
+        "retry_times, create_time, ",
+        "update_time)",
+        "values (#{id,jdbcType=INTEGER}, #{requestId,jdbcType=VARCHAR}, ",
+        "#{detail,jdbcType=VARCHAR}, #{requestStatus,jdbcType=INTEGER}, ",
+        "#{retryTimes,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, ",
+        "#{updateTime,jdbcType=TIMESTAMP})"
+    })
+id,requestId,detail,requestStatus,retryTimes,createTime,updateTime
+
+
+   ALTER USER 'test'@'%' IDENTIFIED WITH mysql_native_password BY 'test'; #更新一下用户的密码为1234
+"select",
+        "id, request_id, detail, request_status, retry_times, create_time, update_time",
+        "from request_create_status",
+        "where id = #{id,jdbcType=INTEGER}"
+
+
+
+
+@Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="request_id", property="requestId", jdbcType=JdbcType.VARCHAR),
+        @Result(column="detail", property="detail", jdbcType=JdbcType.VARCHAR),
+        @Result(column="request_status", property="requestStatus", jdbcType=JdbcType.INTEGER),
+        @Result(column="retry_times", property="retryTimes", jdbcType=JdbcType.INTEGER),
+        @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP)
+    })
+
+column="id" property="id" jdbcType="INTEGER" id=true
+column="request_id" property="requestId" jdbcType="VARCHAR"
+column="detail" property="detail" jdbcType="VARCHAR"
+column="request_status" property="requestStatus" jdbcType="INTEGER"
+column="retry_times" property="retryTimes" jdbcType="INTEGER"
+column="create_time" property="createTime" jdbcType="TIMESTAMP"
+column="update_time" property="updateTime" jdbcType="TIMESTAMP"
+
+
+
+
+
+
