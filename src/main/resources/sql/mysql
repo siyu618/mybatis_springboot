@@ -5,8 +5,8 @@ GRANT ALL ON *.* TO 'test'@'%';
 
 CREATE TABLE `request_create_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `request_id` varchar(50) NOT NULL COMMENT '用户名',
-  `detail` varchar(1000) NOT NULL COMMENT 'detail',
+  `request_id` varchar(50) NOT NULL UNIQUE COMMENT '用户名',
+  `detail` varchar(2000) NOT NULL COMMENT 'detail',
    `request_status` int(11) NOT NULL COMMENT 'request status',
    `retry_times` int(11) NOT NULL COMMENT 'retry times',
   `create_time` datetime NOT NULL COMMENT '创建时间',
